@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.34301.259
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cleaner-app", "cleaner-app\cleaner-app.csproj", "{C9F099B7-09A3-45B3-A5BA-6DD3E163B1CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleaner.Main.App", "cleaner-app\Cleaner.Main.App.csproj", "{C9F099B7-09A3-45B3-A5BA-6DD3E163B1CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleaner.Core", "Cleaner.Core\Cleaner.Core.csproj", "{6CE63564-216D-42E2-A46D-AD81C7670EE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C9F099B7-09A3-45B3-A5BA-6DD3E163B1CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9F099B7-09A3-45B3-A5BA-6DD3E163B1CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9F099B7-09A3-45B3-A5BA-6DD3E163B1CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CE63564-216D-42E2-A46D-AD81C7670EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CE63564-216D-42E2-A46D-AD81C7670EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CE63564-216D-42E2-A46D-AD81C7670EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CE63564-216D-42E2-A46D-AD81C7670EE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
