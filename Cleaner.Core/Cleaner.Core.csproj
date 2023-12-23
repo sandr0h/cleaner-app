@@ -45,6 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\FileSystemAccessRepository.cs" />
     <Compile Include="Services\CleanService.cs" />
+    <Compile Include="Services\Interfaces\ICleanService.cs" />
+    <Compile Include="Services\Interfaces\IMessageQueueService.cs" />
+    <Compile Include="Services\MessageQueueService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Const\" />

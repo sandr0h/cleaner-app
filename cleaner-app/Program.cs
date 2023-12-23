@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cleaner.Core.Services;
+using Cleaner.Core.Services.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace cleaner_app
 {
@@ -14,9 +17,24 @@ namespace cleaner_app
         [STAThread]
         static void Main()
         {
+            var services = new ServiceCollection();
+            ConfigureServices(services);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
+            {
+                var mainForm = serviceProvider.GetRequiredService<MainForm>();
+                Application.Run(mainForm);
+            }
+        }
+
+        private static void ConfigureServices(ServiceCollection services)
+        {
+            services.AddTransient<MainForm>();
+
+            services.AddSingleton<ICleanService, CleanService>();
+            services.AddSingleton<IMessageQueueService, MessageQueueService>();
         }
     }
 }
