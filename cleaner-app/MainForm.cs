@@ -1,4 +1,5 @@
-﻿using Cleaner.Core.Services;
+﻿using Cleaner.Core.Const;
+using Cleaner.Core.Services;
 using Cleaner.Core.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -29,17 +30,18 @@ namespace cleaner_app
         {
             this.Tasks();
 
-            var teste = this._messageQueueService.GetMessages();
-            foreach (var item in teste)
-            {
+            var messages = this._messageQueueService.GetMessages();
+            this.RTB_Log.AppendText($"Start - {DateTime.UtcNow}" + Environment.NewLine);
+            foreach (var item in messages) 
                 this.RTB_Log.AppendText(item + Environment.NewLine);
-            }
+            this.RTB_Log.AppendText($"End -  {DateTime.UtcNow}" + Environment.NewLine);
         }
 
         #region " Methods "
         private void Tasks()
         {
-            this._cleanService.RunCleaning(folderPath: Path.GetTempPath());
+            this._cleanService.RunCleaning(folderPath: PathsToClean.APP_DATA.USERTEMP);
+            this._cleanService.RunCleaning(folderPath: PathsToClean.APP_DATA.MICROSOFT_EDGE);
         }
         #endregion
     }

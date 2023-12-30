@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cleaner.Core.Repositories.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Cleaner.Core.Repositories
 {
-    public class FileSystemAccessRepository
+    public class FileSystemAccessRepository : IFileSystemAccessRepository
     {
         public IEnumerable<Entities.File> GetFiles(string folderPath)
         {

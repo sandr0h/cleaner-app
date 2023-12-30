@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cleaner.Core.Repositories;
+using Cleaner.Core.Repositories.Interfaces;
 using Cleaner.Core.Services;
 using Cleaner.Core.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,8 +35,14 @@ namespace cleaner_app
         {
             services.AddTransient<MainForm>();
 
+            #region " Services "
             services.AddSingleton<ICleanService, CleanService>();
             services.AddSingleton<IMessageQueueService, MessageQueueService>();
+            #endregion
+
+            #region " Repository "
+            services.AddSingleton<IFileSystemAccessRepository, FileSystemAccessRepository>();
+            #endregion
         }
     }
 }

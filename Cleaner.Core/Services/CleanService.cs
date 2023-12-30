@@ -1,4 +1,5 @@
 ﻿using Cleaner.Core.Repositories;
+using Cleaner.Core.Repositories.Interfaces;
 using Cleaner.Core.Services.Interfaces;
 using System;
 using System.Collections.Concurrent;
@@ -11,10 +12,14 @@ namespace Cleaner.Core.Services
 {
     public class CleanService : ICleanService
     {
+        private readonly IFileSystemAccessRepository _fileSystemAccessRepository;
         private readonly IMessageQueueService _messageQueueService;
-        private FileSystemAccessRepository _fileSystemAccessRepository = new FileSystemAccessRepository();
         public CleanService() { }
-        public CleanService(IMessageQueueService _messageQueueService) => this._messageQueueService = _messageQueueService;
+        public CleanService(IFileSystemAccessRepository fileSystemAccessRepository, IMessageQueueService _messageQueueService)
+        {
+            this._fileSystemAccessRepository = fileSystemAccessRepository;
+            this._messageQueueService = _messageQueueService;
+        }
         public void RunCleaning(string folderPath)
         {
             var exceptions = new ConcurrentQueue<Exception>();
@@ -25,7 +30,7 @@ namespace Cleaner.Core.Services
                 try
                 {
                     this._fileSystemAccessRepository.DeleteFile(file);
-                    this._messageQueueService.AddMessage($"File {file.Path} deleted!");
+                    this._messageQueueService.AddMessage($"The {file.Path} file has been successfully deleted!!");
                 }
                 catch (Exception e)
                 {
